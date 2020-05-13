@@ -1,1 +1,29 @@
+import datetime
 
+#my current income is calculated with the following logic:
+#month 0 = contracted hours (20/week)
+#month 1 = contracted hours + overtime
+#overtime is given when total hours overtime is over 30
+
+def totalHours(): # Function that works out monthly hours
+    contractedHours = int(input("What's your weekly contracted hours? "))
+    monthlyHours = contractedHours * 4
+    return monthlyHours
+
+def basePay(monthlyHours): # Function that works out monthly pay based on contracted/standard hours
+    hourlyPay = int(input("What's your hourly pay? "))
+    monthlyPay = (hourlyPay * monthlyHours)
+    return monthlyPay
+
+def overtime(): # Function that works out overtime worked.
+    hoursWorked = int(input('how many hours did you work this month? '))
+    monthlyOvertime = hoursWorked - 80
+    return monthlyOvertime
+
+def totalPay(hourlyPay, monthlyHours, monthlyOvertime):
+    totalPay = hourlyPay * (monthlyHours + monthlyOvertime)
+    return print(totalPay)
+
+basePay(totalHours)
+overtime()
+totalPay(totalHours, basePay, overtime)
